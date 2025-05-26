@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regex Visualizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Regular Expression Visualizer</h1>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="regex" class="form-label">Regular Expression (e.g., (a|b)[0-9]+):</label>
+                <input type="text" class="form-control" id="regex" placeholder="Enter regex" value="(a|b)[0-9]+">
+            </div>
+        </div>
+        <div class="text-center mb-3">
+                <div class="card shadow-sm p-3" id="regex-tips">
+                    <h5 class="card-title text-primary">Regex Optimization Tips</h5>
+                    <ul class="card-text small" id="tips-list">
+
+                    </ul>
+                </div>
+        </div>
+        <div class="text-center mb-3">
+            <label for="visualizationType" class="form-label">Choose Visualization Type:</label>
+            <select id="visualizationType" class="form-select w-auto d-inline-block">
+                <option value="all" selected>All</option>
+                <option value="ast">Parse Tree (AST)</option>
+                <option value="nfal">NFAl (NFA with Lambda)</option>
+                <option value="nfa">NFA (No Lambda)</option>
+                <option value="dfa">DFA</option>
+                <option value="dfam">DFAm (Minimized)</option>
+            </select>
+        </div>
+
+        <div id="info-card" class="card mx-auto mb-3" style="display: none; max-width: 700px;">
+            <div class="card-body">
+                <h5 class="card-title" id="info-title">Info Title</h5>
+                <p class="card-text" id="info-text">Info content will appear here based on selection.</p>
+            </div>
+        </div>
+
+
+        <div class="text-center mb-3">
+            <button class="btn btn-primary" onclick="generateAndVisualize()">Generate Automata</button>
+        </div>
+        <div class="row">
+
+        <div id="error" class="text-danger text-center mb-3"></div>
+        <h3>Parse Tree</h3>
+        <div id="parse-tree-svg" class="svg-container"></div>
+        <h3>NFAl (NFA with Lambda Transitions)</h3>
+        <div id="nfal-svg" class="svg-container"></div>
+        <h3>NFA (Without Lambda Transitions)</h3>
+        <div id="nfa-svg" class="svg-container"></div>
+        <h3>DFA</h3>
+        <div id="dfa-svg" class="svg-container"></div>
+        <h3>DFAm (Minimized DFA)</h3>
+        <div id="dfam-svg" class="svg-container"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/viz.js@2.1.2/viz.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/viz.js@2.1.2/full.render.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
